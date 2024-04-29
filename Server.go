@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -21,7 +22,8 @@ func main() {
 }
 
 func Handler(ctx echo.Context) error {
-	err := ctx.String(http.StatusOK, "test")
+	employees, _ := json.Marshal("True")
+	err := ctx.String(http.StatusOK, string(employees))
 	if err != nil {
 		return err
 	}
